@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太太享物 · 2025年终投资分析报告</title>
+    <meta name="description" content="太太享物2025年度经营数据仪表板 — 面向金融投资者的专业运营分析报告">
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- NAV -->
+        <nav class="nav-bar">
+            <a href="#kpi">📌 核心指标</a>
+            <a href="#trend">📊 经营趋势</a>
+            <a href="#risk">⚠️ 风险分析</a>
+            <a href="#revenue">💹 营收分析</a>
+            <a href="#store">🏪 门店明细</a>
+            <a href="#cost">📋 成本分析</a>
+            <a href="#expense">💳 支出明细</a>
+            <a href="#roi">🎯 投资回报</a>
+        </nav>
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <h1>🏢 太太享物集团 · 投资者分析仪表板</h1>
+                <p class="subtitle">TTXW Group — 2025 Annual Operations & Financial Report for Investors</p>
+            </div>
+            <div class="header-right">
+                <span class="badge badge-confidential">🔒 机密</span>
+                <span class="badge badge-live">实时数据</span>
+                <span class="date-display">报告期：2024.01 — 2025.09 | 更新于 2025-12</span>
+            </div>
+        </header>
+
+        <!-- KPI CARDS -->
+        <div id="kpi" class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">💰</div>
+                <div class="kpi-label">待收总额</div>
+                <div class="kpi-value">¥205.69万</div>
+                <span class="kpi-change negative">↓ 61.6% vs 峰值</span>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📈</div>
+                <div class="kpi-label">累计利润</div>
+                <div class="kpi-value">¥85.63万</div>
+                <span class="kpi-change positive">↑ 41.63% 利润率</span>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">⚠️</div>
+                <div class="kpi-label">逾期金额</div>
+                <div class="kpi-value">¥205.69万</div>
+                <span class="kpi-change negative">逾期率 100%</span>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🏪</div>
+                <div class="kpi-label">总订单数</div>
+                <div class="kpi-value">1,032</div>
+                <span class="kpi-change positive">5家活跃门店</span>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🔄</div>
+                <div class="kpi-label">复投金额</div>
+                <div class="kpi-value">¥1,710万</div>
+                <span class="kpi-change neutral">资金复投率高</span>
+            </div>
+        </div>
+
+        <!-- SECTION 1: TRENDS -->
+        <h2 id="trend" class="section-title">📊 经营趋势分析 Operational Trends</h2>
+        <div class="chart-card-full">
+            <div class="chart-header">
+                <div>
+                    <div class="chart-title">待收金额 · 实际出资 · 成本支出 — 三线趋势</div>
+                    <div class="chart-subtitle">Receivables / Net Investment / Costs — 18 Month Trend</div>
+                </div>
+            </div>
+            <div class="chart-container"><canvas id="chartMain" height="300"></canvas></div>
+        </div>
+
+        <div class="chart-grid-equal">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">利润金额 & 利润率双轴图</div>
+                        <div class="chart-subtitle">Profit Amount & Margin Rate — Dual Axis</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartProfitDual" height="280"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">投资回收进度</div>
+                        <div class="chart-subtitle">Net Investment Recovery — Path to Profitability</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartRecovery" height="280"></canvas></div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: RISK -->
+        <h2 id="risk" class="section-title">⚠️ 风险监控分析 Risk Monitoring</h2>
+        <div class="chart-grid-equal">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">逾期金额趋势</div>
+                        <div class="chart-subtitle">Overdue Amount — Area Chart</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartOverdue" height="260"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">逾期率趋势 (逾期/待收)</div>
+                        <div class="chart-subtitle">Overdue Rate — Risk Indicator</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartOverdueRate" height="260"></canvas></div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: REVENUE -->
+        <h2 id="revenue" class="section-title">💹 营收结构分析 Revenue Breakdown</h2>
+        <div class="chart-grid-3">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">收入构成</div>
+                        <div class="chart-subtitle">Revenue Composition</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartRevenueCompose" height="260"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">门店待收占比</div>
+                        <div class="chart-subtitle">Receivables Risk Concentration</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartStoreReceivable" height="260"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">门店订单占比</div>
+                        <div class="chart-subtitle">Order Distribution</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartStoreOrder" height="260"></canvas></div>
+            </div>
+        </div>
+
+        <div class="chart-grid-equal">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">租赁业绩 vs 电商业绩</div>
+                        <div class="chart-subtitle">Lease vs E-Commerce Performance by Store</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartLeaseEcom" height="260"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">门店多维度雷达图</div>
+                        <div class="chart-subtitle">Store Performance Radar — Normalized</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartRadar" height="260"></canvas></div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: STORE TABLE -->
+        <h2 id="store" class="section-title">🏪 门店经营明细 Store Performance</h2>
+        <div class="table-card">
+            <div class="chart-header">
+                <div>
+                    <div class="chart-title">各门店核心指标对比</div>
+                    <div class="chart-subtitle">Key Metrics by Store — as of 2025-12 (数据汇总)</div>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>门店</th>
+                        <th>订单数</th>
+                        <th>总待收(¥)</th>
+                        <th>租赁待收(¥)</th>
+                        <th>电商待收(¥)</th>
+                        <th>增值费(¥)</th>
+                        <th>租金(¥)</th>
+                        <th>放款(¥)</th>
+                        <th>租赁业绩(¥)</th>
+                        <th>电商业绩(¥)</th>
+                        <th>实际出资(¥)</th>
+                        <th>在途台数</th>
+                        <th>逾期台数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="store-name">🏆 涛涛好物</td>
+                        <td>726</td>
+                        <td class="amount-neutral">1,612,441.57</td>
+                        <td>1,612,441.57</td>
+                        <td>—</td>
+                        <td>156,413.30</td>
+                        <td class="amount-positive">9,472,583.91</td>
+                        <td>6,968,550.00</td>
+                        <td class="amount-positive">3,011,805.00</td>
+                        <td>—</td>
+                        <td class="amount-positive">-2,561,265.61</td>
+                        <td>6</td>
+                        <td class="amount-negative">6</td>
+                    </tr>
+                    <tr>
+                        <td class="store-name">刚刚好物</td>
+                        <td>232</td>
+                        <td class="amount-neutral">414,804.08</td>
+                        <td>—</td>
+                        <td>414,804.08</td>
+                        <td>—</td>
+                        <td>2,000.00</td>
+                        <td>2,246,640.00</td>
+                        <td>—</td>
+                        <td class="amount-positive">1,250,199.74</td>
+                        <td class="amount-positive">-448,260.07</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="store-name">太太租物</td>
+                        <td>74</td>
+                        <td class="amount-neutral">29,662.06</td>
+                        <td>29,662.06</td>
+                        <td>—</td>
+                        <td>10,198.29</td>
+                        <td class="amount-positive">777,355.82</td>
+                        <td>624,008.00</td>
+                        <td class="amount-positive">105,082.19</td>
+                        <td>15,796.66</td>
+                        <td class="amount-positive">-286,020.34</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr style="font-weight:700; background:rgba(99,102,241,0.05);">
+                        <td class="store-name">📊 总平台合计</td>
+                        <td>1,032</td>
+                        <td>2,056,907.71</td>
+                        <td>1,642,103.63</td>
+                        <td>414,804.08</td>
+                        <td>166,611.59</td>
+                        <td class="amount-positive">10,251,939.73</td>
+                        <td>9,839,198.00</td>
+                        <td class="amount-positive">3,116,887.19</td>
+                        <td>1,265,996.40</td>
+                        <td class="amount-positive">-856,310.00</td>
+                        <td>6</td>
+                        <td class="amount-negative">6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECTION 5: COST -->
+        <h2 id="cost" class="section-title">📋 成本趋势分析 Cost Analysis</h2>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">累计成本增长曲线</div>
+                        <div class="chart-subtitle">Cumulative Cost Growth (Sheet2)</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartCumulative" height="260"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">利润率走势柱状图</div>
+                        <div class="chart-subtitle">Profit Margin — Color Coded</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartMarginBar" height="260"></canvas></div>
+            </div>
+        </div>
+
+        <!-- SECTION 6: EXPENSE -->
+        <h2 id="expense" class="section-title">💳 支出分类分析 Expense Breakdown</h2>
+        <div class="chart-grid-equal">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">支出类别占比</div>
+                        <div class="chart-subtitle">Expense by Category (Sheet3)</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartExpenseCat" height="260"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">月度支出趋势</div>
+                        <div class="chart-subtitle">Monthly Expense Timeline (Sheet3)</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartExpenseMonth" height="260"></canvas></div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: ROI -->
+        <h2 id="roi" class="section-title">🎯 投资回报总结 Investment Return</h2>
+        <div class="chart-grid-equal">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">资金流向全景</div>
+                        <div class="chart-subtitle">Capital Flow Overview</div>
+                    </div>
+                </div>
+                <div class="chart-container"><canvas id="chartCashFlow" height="280"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">投资回报总结</div>
+                        <div class="chart-subtitle">Investment Return Summary</div>
+                    </div>
+                </div>
+                <div style="padding:16px 0;">
+                    <div class="summary-grid">
+                        <div class="summary-item" style="background:rgba(99,102,241,0.08);">
+                            <div class="label">总放款金额 Total Loans</div>
+                            <div class="value">¥9,839,198.00</div>
+                        </div>
+                        <div class="summary-item" style="background:rgba(16,185,129,0.08);">
+                            <div class="label">总租金收入 Total Rental Income</div>
+                            <div class="value" style="color:var(--accent-green);">¥10,251,939.73</div>
+                        </div>
+                        <div class="summary-item" style="background:rgba(168,85,247,0.08);">
+                            <div class="label">复投金额 Reinvestment</div>
+                            <div class="value" style="color:var(--accent-purple);">¥17,102,217.94</div>
+                        </div>
+                        <div class="summary-item" style="background:rgba(6,182,212,0.08);">
+                            <div class="label">总业绩 Total Performance</div>
+                            <div class="value" style="color:var(--accent-cyan);">¥4,382,883.59</div>
+                        </div>
+                        <div class="summary-item" style="background:rgba(245,158,11,0.08);">
+                            <div class="label">净利润状态 Net Profit Status</div>
+                            <div class="value" style="color:var(--accent-green);">✅ 已回本 ¥856,310</div>
+                        </div>
+                        <div class="summary-item" style="background:rgba(244,63,94,0.08);">
+                            <div class="label">运营成本总计 Total OpEx</div>
+                            <div class="value" style="color:var(--accent-rose);">¥2,439,236.02</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>太太享物集团 · 2025年终经营分析报告 | 数据来源：内部ERP系统 | 仅供投资者参考</p>
+            <p style="margin-top:4px;">TTXW Group © 2025 — Confidential Investor Report</p>
+            <p style="margin-top:8px;font-size:11px;color:var(--text-muted);">💡 提示：Ctrl+P 可直接打印为PDF | 本文件为单页面应用，双击即可打开
+            </p>
+        </footer>
+    </div>
+
+    <script src="dashboard-charts.js"></script>
+</body>
+
+</html>
