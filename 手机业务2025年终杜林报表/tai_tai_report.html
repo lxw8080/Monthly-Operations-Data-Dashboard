@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太太享物2025年9月运营财务报告</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #858796;
+            --success-color: #1cc88a;
+            --info-color: #36b9cc;
+            --warning-color: #f6c23e;
+            --danger-color: #e74a3b;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background-color: #f8f9fc;
+            color: #5a5c69;
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            color: var(--primary-color) !important;
+        }
+
+        .card {
+            border: none;
+            border-radius: 0.35rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            background-color: #f8f9fc;
+            border-bottom: 1px solid #e3e6f0;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .metric-card {
+            position: relative;
+            padding: 1rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .metric-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2.5rem;
+            opacity: 0.3;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .table th {
+            border-top: none;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .positive {
+            color: var(--success-color);
+        }
+
+        .negative {
+            color: var(--danger-color);
+        }
+
+        .footer {
+            background-color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e3e6f0;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e3e6f0;
+        }
+
+        .highlight-box {
+            background-color: #e8f4fd;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .key-metric {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            text-align: center;
+        }
+
+        .key-metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .key-metric-label {
+            font-size: 0.875rem;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-graph-up-arrow"></i> 太太享物运营财务报告
+            </a>
+            <span class="navbar-text">
+                2025年9月 | 投资者专版
+            </span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- 关键指标卡片 -->
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card metric-card bg-primary text-white">
+                    <div class="metric-icon">
+                        <i class="bi bi-cart-check"></i>
+                    </div>
+                    <div class="metric-value">1,032</div>
+                    <div class="metric-label">总订单数</div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card metric-card bg-success text-white">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-yen"></i>
+                    </div>
+                    <div class="metric-value">2,460,084.58</div>
+                    <div class="metric-label">总待收 (元)</div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card metric-card bg-info text-white">
+                    <div class="metric-icon">
+                        <i class="bi bi-percent"></i>
+                    </div>
+                    <div class="metric-value">82.9%</div>
+                    <div class="metric-label">租赁业务占比</div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card metric-card bg-warning text-white">
+                    <div class="metric-icon">
+                        <i class="bi bi-cash-stack"></i>
+                    </div>
+                    <div class="metric-value">165,072.09</div>
+                    <div class="metric-label">增值费收入 (元)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 业务亮点 -->
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-star-fill"></i> 业务亮点
+            </div>
+            <div class="card-body">
+                <div class="highlight-box">
+                    <h4>稳健的财务表现</h4>
+                    <p>截至2025年9月，平台总待收金额达<span class="positive">2,460,084.58元</span>，其中租赁业务占比高达<span class="positive">82.9%</span>，显示出租赁业务的强劲表现和稳定性。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>多元化收入结构</h4>
+                    <p>平台收入来源多元化，包括租赁待收、电商待收、增值费和延保服务等，有效降低了单一业务风险，增强了平台的抗风险能力。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>健康的资金流</h4>
+                    <p>累计放款<span class="positive">9,769,018.00元</span>，累计复投<span class="positive">17,102,217.94元</span>，表明投资者对平台的高度认可和信心。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 收入结构分析 -->
+        <div class="row mt-4">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-pie-chart"></i> 收入结构分析
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-cash-coin"></i> 资金流动概览
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="fundFlowChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 财务数据表格 -->
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-table"></i> 详细财务数据
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>项目</th>
+                                        <th>金额 (元)</th>
+                                        <th>占比</th>
+                                        <th>备注</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>总待收</strong></td>
+                                        <td><strong>2,460,084.58</strong></td>
+                                        <td>100%</td>
+                                        <td>平台总应收账款</td>
+                                    </tr>
+                                    <tr>
+                                        <td>租赁待收</td>
+                                        <td>2,039,361.23</td>
+                                        <td>82.9%</td>
+                                        <td>租赁业务应收账款</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电商待收</td>
+                                        <td>420,723.35</td>
+                                        <td>17.1%</td>
+                                        <td>电商业务应收账款</td>
+                                    </tr>
+                                    <tr>
+                                        <td>增值费</td>
+                                        <td>165,072.09</td>
+                                        <td>6.7%</td>
+                                        <td>增值服务费用收入</td>
+                                    </tr>
+                                    <tr>
+                                        <td>延保服务</td>
+                                        <td>415,258.42</td>
+                                        <td>16.9%</td>
+                                        <td>延保服务收入</td>
+                                    </tr>
+                                    <tr>
+                                        <td>首付款</td>
+                                        <td>30,967.08</td>
+                                        <td>1.3%</td>
+                                        <td>订单首付款</td>
+                                    </tr>
+                                    <tr>
+                                        <td>租金</td>
+                                        <td>9,788,295.79</td>
+                                        <td>397.9%</td>
+                                        <td>累计租金收入</td>
+                                    </tr>
+                                    <tr>
+                                        <td>尾款</td>
+                                        <td>2,377,495.22</td>
+                                        <td>96.6%</td>
+                                        <td>订单尾款</td>
+                                    </tr>
+                                    <tr>
+                                        <td>买断金</td>
+                                        <td>15.70</td>
+                                        <td>0.0006%</td>
+                                        <td>买断服务费用</td>
+                                    </tr>
+                                    <tr>
+                                        <td>放款</td>
+                                        <td>9,769,018.00</td>
+                                        <td>397.2%</td>
+                                        <td>累计放款总额</td>
+                                    </tr>
+                                    <tr>
+                                        <td>复投</td>
+                                        <td>17,102,217.94</td>
+                                        <td>695.1%</td>
+                                        <td>累计复投金额</td>
+                                    </tr>
+                                    <tr>
+                                        <td>租赁</td>
+                                        <td>3,558,560.70</td>
+                                        <td>144.7%</td>
+                                        <td>租赁业务总额</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电商</td>
+                                        <td>851,929.00</td>
+                                        <td>34.6%</td>
+                                        <td>电商业务总额</td>
+                                    </tr>
+                                    <tr>
+                                        <td>供应商利润</td>
+                                        <td>141,060.00</td>
+                                        <td>5.7%</td>
+                                        <td>供应商利润分成</td>
+                                    </tr>
+                                    <tr>
+                                        <td>成本</td>
+                                        <td>2,439,236.02</td>
+                                        <td>99.1%</td>
+                                        <td>总运营成本</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关键指标分析 -->
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-graph-up"></i> 业务表现分析
+                    </div>
+                    <div class="card-body">
+                        <div class="key-metrics">
+                            <div class="key-metric">
+                                <div class="key-metric-value positive">82.9%</div>
+                                <div class="key-metric-label">租赁业务占比</div>
+                            </div>
+                            <div class="key-metric">
+                                <div class="key-metric-value">1,032</div>
+                                <div class="key-metric-label">总订单数</div>
+                            </div>
+                            <div class="key-metric">
+                                <div class="key-metric-value positive">17.1%</div>
+                                <div class="key-metric-label">电商业务占比</div>
+                            </div>
+                            <div class="key-metric">
+                                <div class="key-metric-value positive">6.7%</div>
+                                <div class="key-metric-label">增值费收入占比</div>
+                            </div>
+                        </div>
+
+                        <h4 class="section-title">业务亮点</h4>
+                        <ul>
+                            <li>租赁业务占据主导地位，占总待收的82.9%，显示出平台在租赁领域的核心竞争力</li>
+                            <li>电商业务稳步发展，占总待收的17.1%，为平台提供了多元化的收入来源</li>
+                            <li>增值费和延保服务作为额外收入来源，分别占总收入的6.7%和16.9%</li>
+                            <li>累计放款9,769,018元，累计复投17,102,217元，表明投资者对平台的高度认可</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-currency-exchange"></i> 财务状况分析
+                    </div>
+                    <div class="card-body">
+                        <div class="key-metrics">
+                            <div class="key-metric">
+                                <div class="key-metric-value">2,460,084.58</div>
+                                <div class="key-metric-label">总待收(元)</div>
+                            </div>
+                            <div class="key-metric">
+                                <div class="key-metric-value">2,439,236.02</div>
+                                <div class="key-metric-label">总成本(元)</div>
+                            </div>
+                            <div class="key-metric">
+                                <div class="key-metric-value positive">20,848.56</div>
+                                <div class="key-metric-label">净利润(元)</div>
+                            </div>
+                            <div class="key-metric">
+                                <div class="key-metric-value positive">0.85%</div>
+                                <div class="key-metric-label">利润率</div>
+                            </div>
+                        </div>
+
+                        <h4 class="section-title">财务亮点</h4>
+                        <ul>
+                            <li>总待收金额达2,460,084.58元，显示出平台的强劲业务表现</li>
+                            <li>总成本控制在2,439,236.02元，实现净利润20,848.56元</li>
+                            <li>供应商利润分成达141,060元，占总待收的5.7%，表明与供应商合作良好</li>
+                            <li>平台累计租金收入达9,788,295.79元，显示出租赁业务的稳定性和可持续性</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 未来展望 -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <i class="bi bi-lightbulb"></i> 未来展望
+            </div>
+            <div class="card-body">
+                <h4 class="section-title">发展战略</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>业务拓展</h5>
+                        <ul>
+                            <li>继续深化租赁业务优势，提高市场份额</li>
+                            <li>加强电商业务发展，提高电商业务占比</li>
+                            <li>拓展增值服务种类，提高增值费收入</li>
+                            <li>优化延保服务，提高客户满意度</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>财务优化</h5>
+                        <ul>
+                            <li>严格控制成本，提高利润率</li>
+                            <li>优化资金结构，提高资金使用效率</li>
+                            <li>加强风险控制，降低坏账率</li>
+                            <li>提升投资者回报率，增强投资者信心</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 class="section-title mt-4">投资价值</h4>
+                <p>太太享物平台凭借其稳健的财务表现、多元化的业务结构和良好的投资者关系，展现出持续发展的潜力。随着业务的不断拓展和运营效率的持续提升，平台有望在未来实现更加显著的增长，为投资者创造更大的价值。</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>太太享物 - 2025年9月运营财务报告</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>报告日期：2025年10月 | 本报告仅供投资者参考</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 收入结构分析图表
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'pie',
+            data: {
+                labels: ['租赁待收', '电商待收', '增值费', '延保服务'],
+                datasets: [{
+                    data: [2039361.23, 420723.35, 165072.09, 415258.42],
+                    backgroundColor: [
+                        'rgba(78, 115, 223, 0.8)',
+                        'rgba(54, 185, 204, 0.8)',
+                        'rgba(246, 194, 62, 0.8)',
+                        'rgba(28, 200, 138, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(78, 115, 223, 1)',
+                        'rgba(54, 185, 204, 1)',
+                        'rgba(246, 194, 62, 1)',
+                        'rgba(28, 200, 138, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${label}: ¥${value.toLocaleString()} (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 资金流动概览图表
+        const fundFlowCtx = document.getElementById('fundFlowChart').getContext('2d');
+        const fundFlowChart = new Chart(fundFlowCtx, {
+            type: 'bar',
+            data: {
+                labels: ['总待收', '累计放款', '累计复投', '总成本'],
+                datasets: [{
+                    label: '金额 (元)',
+                    data: [2460084.58, 9769018.00, 17102217.94, 2439236.02],
+                    backgroundColor: [
+                        'rgba(78, 115, 223, 0.8)',
+                        'rgba(28, 200, 138, 0.8)',
+                        'rgba(54, 185, 204, 0.8)',
+                        'rgba(231, 74, 59, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(78, 115, 223, 1)',
+                        'rgba(28, 200, 138, 1)',
+                        'rgba(54, 185, 204, 1)',
+                        'rgba(231, 74, 59, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '¥' + value.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `金额: ¥${context.raw.toLocaleString()}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
